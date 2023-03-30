@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Все статьи 📖
+{% endblock %}
+
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Все статьи, что написаны. Находятся тут ⬇ <img src="https://i.gifer.com/origin/24/24bc12e3068b10ae9ac86ea238fe112c_w200.gif" alt=""></h1>
+
+    {% if articles|length > 0 %}
+        {% for el in articles %}
+        <div class="alert alert-dark">
+            <h2>{{ el.title }}</h2>
+            <p>{{ el.intro }}</p>
+            <p><b>Дата:{{ el.date.date() }}</b></p>
+            <a href="/posts/{{ el.id }}" class="btn btn-success">Подробнее</a>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <h5 class="container">На сайте еще нет статей</h5>
+    {% endif %}
+    </div>
+{% endblock %}
